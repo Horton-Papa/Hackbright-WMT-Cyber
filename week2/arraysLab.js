@@ -137,8 +137,16 @@ console.log(reversedArray);
 const groceryList = ['apple', 'banana', 'cherry', 'durian']
 const itemToRemove = 'banana';
 
+if (groceryList.indexOf(itemToRemove) >= 0) {
+    groceryList.splice(groceryList.indexOf(itemToRemove),1);
+    console.log(groceryList);
+} else {
+    console.log(groceryList);
+}
+
 // Also try with itemToRemove = 'apricot' and make sure that nothing happens
 // to the grocery list
+// HP: can confirm nothing happened. 
 
 
 //////////////////PROBLEM 14////////////////////
@@ -155,6 +163,15 @@ const itemToRemove = 'banana';
 let sum = 0;
 const repeats = [1, 1, 2, 5, 2, 6, 6];
 
+// Q for office hour: i-1 >0 is false, then beginning of array. otherwise, -1 can begin at end, if there is 1 and at endd, it will add? or other way?
+for (let i = 0; i <= repeats.length; i++) {
+    if (repeats[i-1] === repeats[i]) {
+        sum = sum + repeats[i];
+    } else {
+        // do nothing
+    }
+}
+console.log(sum);
 //////////////////PROBLEM 15////////////////////
 
 // In the function below, inputArray is an array of numbers.
@@ -164,3 +181,12 @@ const repeats = [1, 1, 2, 5, 2, 6, 6];
 
 const inputArray = [1, -2, 3, 5, -8, -13, 21];
 const indexes = [];
+
+for (let i = 0; i <= inputArray.length; i++) {
+    if (inputArray[i] > 0) {
+        indexes.push(i);
+    } else {
+        // do nothing
+    }
+}
+console.log(indexes);
