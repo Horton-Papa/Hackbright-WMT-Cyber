@@ -161,10 +161,9 @@ if (groceryList.indexOf(itemToRemove) >= 0) {
 // The 2's are not repeats because they're not next to each other.
 
 let sum = 0;
-const repeats = [1, 1, 2, 5, 2, 6, 6];
+const repeats = [1, 1, 2, 5, 2, 6, 6,1];
 
-// Q for office hour: i-1 >0 is false, then beginning of array. otherwise, -1 can begin at end, if there is 1 and at endd, it will add? or other way?
-for (let i = 0; i <= repeats.length; i++) {
+for (let i = 1; i <= repeats.length; i++) {
     if (repeats[i-1] === repeats[i]) {
         sum = sum + repeats[i];
     } else {
