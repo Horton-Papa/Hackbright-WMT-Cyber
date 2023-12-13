@@ -1,0 +1,142 @@
+---
+title: "How to use roller package"
+author: "Horton Papa"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(roller)
+```
+
+#Motivation
+
+The package `roller` was created to simulate rolling a multi sided device with an associated probability for each side. This device can be a coin at its simplest form, a die, or a 100 sided object. The package then creates a table of the outcome of the roll dependent on the specified probability of success of each side.
+
+###Functions in package
+- `device()`: creates a multisided object
+- `roll()`: simulates the roll of an object
+- `summary()`: creates a summary of performed rolls
+- `plot()`: Creates a barplot of the relative frequencies of resulting rolls
+
+#Usage
+##Create an object to be tossed
+
+The function `device()` allows the user to create an object that can be used to be rolled.
+
+###Basic device using `device()`
+
+The `device()` function has a default output of a basic, fair two sided object:
+
+```{r}
+basic_device = device()
+basic_device
+```
+
+###Object with multiple sides
+
+You can specify as many sides as you want with respective probabilities:
+
+```{r}
+multi_side = device(sides = letters[1:8], 
+                    prob = rep(1/8, 8))
+multi_side
+```
+
+
+##"Roll" the device with `roll()`
+
+To roll the device simply call the roll function and specify how many times you want to perform the roll and the output will return the respective output of each roll
+
+```{r}
+# roll the basic device
+basic_10 = roll(basic_device, 
+                times = 10)
+
+basic_10
+
+#roll the multi sided device
+multi_300 = roll(multi_side,
+                 times = 300)
+multi_300
+
+```
+
+###View basic summary of output of rolls
+
+The package has been provided with summary method for class "rolls." The summary displays a tally and the proportion of the outcome of each side.
+
+```{r}
+#display summary of basic device roll
+summary(basic_10)
+
+#display summary of multi sided device roll
+summary(multi_300)
+```
+
+
+###Plot method
+
+The plot method for the rolls displays a barplot of the relative frequencies of the rolls; to do this simply call `plot()`
+
+```{r, fig.width= 6, fig.height=5}
+#plot multi_300
+plot(multi_300)
+```
+
+###Other Methods/operations
+
+####Extract roll value
+
+Similar to extracting a value from  a vector, use `[]` notation to extract desired value
+
+```{r}
+#extract 7th roll of basic_10
+basic_10[7]
+
+#extract 213th roll value of multi_300
+multi_300[213]
+```
+
+####Replace the value of a roll 
+
+Similarly as above, the package uses vector operation to extract values and replace it with the deisred value:
+```{r}
+#replace 7th roll of basic_10 with 2
+basic_10[7] = 2
+basic_10[7]
+
+#replace 213th roll with a "c"
+multi_300[213] = "c"
+multi_300[213]
+```
+
+####Add more rolls
+
+To add more rolls simply use the `+` operator to add the desired number of rolls
+
+```{r}
+# add 8 more rolls to basic_10
+basic_18 = basic_10 + 8
+basic_18
+
+# add 100 more rolls to multi_300
+multi_400 = multi_300 + 100
+multi_400
+```
+
+
+
+
+
+
+
