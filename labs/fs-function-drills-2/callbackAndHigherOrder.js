@@ -211,6 +211,7 @@ var users = [
 ]
 // Do not edit the code above.
 
+//would using filter below a more efficient way?
 const getUserById = (objArray, id, callBack) => {
   for (const idx in objArray) {
     if (objArray[idx]["id"] === id) {
@@ -246,7 +247,14 @@ getUserById(users, '16t', user => {
   the two parameters together and return the sum.
 */
 
-// CODE HERE
+const addingFactory = (num1) => {
+  const innerFunc = (num2) => {
+    let result = num1 + num2;
+    return result;
+  }
+
+  return innerFunc;
+}
 
 /*
   Now that you have addingFactory, you can create other
@@ -260,7 +268,10 @@ getUserById(users, '16t', user => {
   10 as an arguemnt.
 */
 
-// CODE HERE
+//doing below code allows the outer function to be called, storing the information from the outer function. addten becomes a function, since the output is a function for the
+// addingFactory function.
+
+const addTen = addingFactory(10);
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -272,7 +283,8 @@ getUserById(users, '16t', user => {
   to see the different outputs.
 */
 
-// CODE HERE
+console.log(addTen(5));
+console.log(addTen(90));
 
 /*
   Let's make another function from the addingFactory. 
@@ -285,4 +297,6 @@ getUserById(users, '16t', user => {
   to add any number to your favorite number!
 */
 
-// CODE HERE
+const addNUMBER = addingFactory(13);
+
+console.log(addNUMBER(12));
