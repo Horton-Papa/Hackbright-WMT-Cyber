@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder</title>
+    <style>
+        /* centering is not working? need to ask michael or vinson */
+        /* #grid-container {
+            display: grid;
+            grid-gap: 1px;
+            margin: auto; 
+            justify-content: center; 
+            align-items: center; 
+        } */
+        .cell {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .path {
+            background-color: yellow;
+        }
+    
+        .obstacle {
+            background-color: gray;
+        }
+
+        .start-cell{
+            background-color: black;
+        }
+
+        .end-cell {
+            background-color: blue;
+        }
+
+        #resetButton {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Finding a path using Breadth First Search (BFS) </h1>
+    </header>
+        <aside>
+            <h2> Let's solve! </h2>
+
+            <form>
+                <label for="row-input"> Number of Rows </label>
+                <input type="number" id="row-input"/>
+
+                <label for="col-input"> Number of Columns </label>
+                <input type="number" id="col-input"/>
+
+                <label for="seed-input"> Enter An Integer Seed Value for Obstacle Generation </label>
+                <input type="number" id="seed-input"/>
+
+                <button>Generate Grid</button>
+            </form>
+        </aside>
+    <button id="resetButton">Reset Grid And Form Values</button>
+    <main>
+        <div class="grid" id="grid-container"></div>
+    </main>
+
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
